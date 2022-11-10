@@ -1,7 +1,7 @@
-db.produtos.update({
-  nome: { $in: ["Quarteirão com Queijo"] },
-},
-  { $push: { ingredientes: "bacon" } });
+db.resumoProdutos.insert({
+  franquia: "McDonalds",
+  totalProdutos: db.produtos.count({}),
+});
 
-db.produtos.find({},
-  { _id: 0, nome: 1, ingredientes: 1 });
+db.resumoProdutos.find({},
+  { _id: 0, franquia: 1, totalProdutos: 1 });
